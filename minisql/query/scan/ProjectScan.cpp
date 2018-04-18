@@ -19,21 +19,21 @@ std::shared_ptr<common::Constant> ProjectScan::getVal(
   if (hasField(fldName)) {
     return s_->getVal(fldName);
   }
-  throw std::runtime_error("ProjectScan: field " + fldName + " not found.");
+  throw std::runtime_error("ProjectScan. field \"" + fldName + "\" not found.");
 }
 
 int32_t ProjectScan::getInt32(const std::string &fldName) const {
   if (hasField(fldName)) {
     return s_->getInt32(fldName);
   }
-  throw std::runtime_error("ProjectScan: field " + fldName + " not found.");
+  throw std::runtime_error("ProjectScan: field \"" + fldName + "\" not found.");
 }
 
 std::string ProjectScan::getString(const std::string &fldName) const {
   if (hasField(fldName)) {
     return s_->getString(fldName);
   }
-  throw std::runtime_error("ProjectScan: field " + fldName + " not found.");
+  throw std::runtime_error("ProjectScan: field \"" + fldName + "\" not found.");
 }
 
 bool ProjectScan::hasField(const std::string &fldName) const {

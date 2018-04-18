@@ -20,8 +20,8 @@ int main() {
     auto planner = minisql::init::MiniSQLInit::planner();
 
     minisql::storage::tx::Transaction tx1;
-    std::string s = "create table student (name varchar(12), grad_year int)";
-    planner->executeUpdate(s, tx1);
+    std::string sql = "create table student (name varchar(12), grad_year int)";
+    planner->executeUpdate(sql, tx1);
     tx1.commit();
 
     const std::vector<std::pair<std::string, uint32_t>> data = {
@@ -34,13 +34,14 @@ int main() {
           "insert into student (name, grad_year) values ('%s', %u)";
       char buf[1024];
       sprintf(buf, fmt, i.first.c_str(), i.second);
+      std::cout << buf << std::endl;
       planner->executeUpdate(buf, tx2);
       tx2.commit();
     }
 
     minisql::storage::tx::Transaction tx3;
-    auto query = "select name, grad_year from student";
-    auto plan = planner->createQueryPlan(query, tx3);
+    sql = "select name, grad_year from student";
+    auto plan = planner->createQueryPlan(sql, tx3);
     assert(plan);
     auto scan = plan->open();
     assert(scan);
@@ -52,18 +53,18 @@ int main() {
     tx3.commit();
 
     minisql::storage::tx::Transaction tx4;
-    s = "update student set grad_year = 2000 where name = 'aaa'";
-    planner->executeUpdate(s, tx4);
+    sql = "update student set grad_year = 2000 where name = 'aaa'";
+    planner->executeUpdate(sql, tx4);
     tx4.commit();
 
     minisql::storage::tx::Transaction tx5;
-    s = "delete from student where name = 'zzz'";
-    planner->executeUpdate(s, tx5);
+    sql = "delete from student where name = 'zzz'";
+    planner->executeUpdate(sql, tx5);
     tx5.commit();
 
     minisql::storage::tx::Transaction tx6;
-    query = "select name, grad_year from student where grad_year = 2000";
-    plan = planner->createQueryPlan(query, tx6);
+    sql = "select name, grad_year from student where grad_year = 2000";
+    plan = planner->createQueryPlan(sql, tx6);
     assert(plan);
     scan = plan->open();
     assert(scan);
@@ -75,10 +76,10 @@ int main() {
     tx6.commit();
 
     minisql::storage::tx::Transaction tx7;
-    query =
+    sql =
         "select name, grad_year from student "
         "where grad_year = 2000 and name = 'xxx'";
-    plan = planner->createQueryPlan(query, tx7);
+    plan = planner->createQueryPlan(sql, tx7);
     assert(plan);
     scan = plan->open();
     assert(scan);
