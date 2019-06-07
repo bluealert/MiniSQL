@@ -1,3 +1,4 @@
+#include <cstring>
 #include <common/ByteBuffer.h>
 
 namespace minisql {

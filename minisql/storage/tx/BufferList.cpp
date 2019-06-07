@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <storage/buffer/Buffer.h>
 #include <storage/buffer/BufferMgr.h>
 #include <storage/buffer/PageFormatter.h>

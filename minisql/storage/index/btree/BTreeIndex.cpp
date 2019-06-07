@@ -1,3 +1,4 @@
+#include <limits>
 #include <common/Int32Constant.h>
 #include <common/StringConstant.h>
 #include <storage/file/Block.h>

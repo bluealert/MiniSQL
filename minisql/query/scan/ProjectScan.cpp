@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <common/Constant.h>
 #include <query/scan/ProjectScan.h>
 

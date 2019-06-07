@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <query/plan/ProjectPlan.h>
 #include <query/planner/opt/HeuristicQueryPlanner.h>
 #include <query/planner/opt/TablePlanner.h>
@@ -78,7 +79,7 @@ std::shared_ptr<query::Plan> HeuristicQueryPlanner::getLowestProductPlan(
   return bestPlan;
 }
 
-void HeuristicQueryPlanner::eraseTp(std::shared_ptr<TablePlanner> tp) {
+void HeuristicQueryPlanner::eraseTp(const std::shared_ptr<TablePlanner>& tp) {
   auto it = std::find(tps_.begin(), tps_.end(), tp);
   if (it != tps_.end()) {
     tps_.erase(it);

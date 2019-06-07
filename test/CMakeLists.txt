@@ -38,7 +38,7 @@ add_library(test_utils utils/TestTable.h utils/RandomInputGenerator.cpp)
 macro(add_gtest test_name test_source)
     message(STATUS "add_gtest: ${test_name}, ${test_source}")
     add_executable(${test_name} ${test_source} TestMain.cpp)
-    target_link_libraries(${test_name} minisql test_utils libgmock libgmock_main
+    target_link_libraries(${test_name} minisql test_utils -pthread libgmock libgmock_main
             ${Boost_LIBRARIES} ${Glog_LIBRARIES})
     add_test(${test_name} bin/${test_name})
 endmacro(add_gtest)

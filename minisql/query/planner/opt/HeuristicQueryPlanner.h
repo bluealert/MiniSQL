@@ -32,7 +32,7 @@ class HeuristicQueryPlanner : public planner::QueryPlanner {
   std::shared_ptr<query::Plan> getLowestProductPlan(
       std::shared_ptr<query::Plan> curr);
 
-  void eraseTp(std::shared_ptr<TablePlanner> tp);
+  void eraseTp(const std::shared_ptr<TablePlanner>& tp);
 
  private:
   std::deque<std::shared_ptr<TablePlanner>> tps_;

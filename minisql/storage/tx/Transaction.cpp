@@ -1,3 +1,4 @@
+#include <atomic>
 #include <glog/logging.h>
 #include <storage/buffer/Buffer.h>
 #include <storage/buffer/BufferMgr.h>

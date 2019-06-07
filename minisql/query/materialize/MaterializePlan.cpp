@@ -1,3 +1,4 @@
+#include <cmath>
 #include <query/materialize/MaterializePlan.h>
 #include <query/materialize/TempTable.h>
 #include <storage/file/Page.h>

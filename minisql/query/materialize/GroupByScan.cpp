@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <common/Constant.h>
 #include <common/Int32Constant.h>
 #include <common/StringConstant.h>

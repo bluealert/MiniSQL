@@ -3,6 +3,7 @@
 #include <query/Term.h>
 #include <query/plan/Plan.h>
 #include <query/scan/Scan.h>
+#include <limits>
 
 namespace minisql {
 namespace query {
